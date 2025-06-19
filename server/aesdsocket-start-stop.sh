@@ -1,14 +1,14 @@
 #!/bin/bash
 
-DAEMON_DIR="/home/vjp527/git/assignment-1-A-rietz/server"
-DAEMON_PATH="$DAEMON_DIR/aesdsocket"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+DAEMON_PATH="$SCRIPT_DIR/aesdsocket"
 DAEMON_NAME="aesdsocket"
 
 case "$1" in
     start)
-    make -C "$DAEMON_DIR" || 
+    make -C "$SCRIPT_DIR" || 
     {
-        echo "make in $DAEMON_DIR failed"
+        echo "make in $SCRIPT_DIR failed"
         exit 1
     }
     echo "Starting $DAEMON_NAME"
