@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-DAEMON_PATH="$SCRIPT_DIR/aesdsocket"
+DAEMON_PATH="/usr/bin/aesdsocket"
 DAEMON_NAME="aesdsocket"
 
 case "$1" in
