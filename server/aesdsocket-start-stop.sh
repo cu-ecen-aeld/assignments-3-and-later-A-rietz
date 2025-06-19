@@ -7,6 +7,8 @@ DAEMON_NAME="aesdsocket"
 case "$1" in
     start)
     echo "Starting $DAEMON_NAME"
+    mkdir -p /var/tmp
+    chmod 777 /var/tmp
     start-stop-daemon -S -b -x "$DAEMON_PATH" -- -d
     ;;
     stop)
