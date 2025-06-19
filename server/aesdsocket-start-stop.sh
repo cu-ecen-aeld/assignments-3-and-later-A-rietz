@@ -6,11 +6,6 @@ DAEMON_NAME="aesdsocket"
 
 case "$1" in
     start)
-    make -C "$SCRIPT_DIR" || 
-    {
-        echo "make in $SCRIPT_DIR failed"
-        exit 1
-    }
     echo "Starting $DAEMON_NAME"
     start-stop-daemon -S -b -x "$DAEMON_PATH" -- -d
     ;;
