@@ -120,23 +120,8 @@ void *handle_connection(void *arg) {
             size_t line_len = line_end - packet + 1;
 
             pthread_mutex_lock(&file_mutex);
-            FILE *fp = fopen(FILE_PATH, "a");
-            if (fp) {
-                fwrite(packet, 1, line_len, fp);
-                fclose(fp);
-
-                fp = fopen(FILE_PATH, "r");
-                if (fp) {
-                    char readbuf[BUF_CHUNK];
-                    size_t n;
-                    while ((n = fread(readbuf, 1, BUF_CHUNK, fp)) > 0) {
-                        if (send(client_fd, readbuf, n, 0) < 0) {
-                            perror("send failed");
-                            break;
-                        }
-                    }
-                    fclose(fp);
-                }
+            if (send(client_fd, packet, line_len, 0) < 0) {
+                perror("send failed");
             }
             pthread_mutex_unlock(&file_mutex);
 
