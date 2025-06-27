@@ -16,7 +16,7 @@ PIDFILE=/var/run/$NAME.pid
 
 start() {
     echo "Starting $NAME"
-    start-stop-daemon --start --background --make-pidfile --pidfile $PIDFILE --exec $DAEMON
+    start-stop-daemon --start --make-pidfile --pidfile $PIDFILE --exec $DAEMON -- -d
 }
 
 stop() {
