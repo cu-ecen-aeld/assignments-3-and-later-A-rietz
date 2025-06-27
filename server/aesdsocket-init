@@ -4,7 +4,7 @@ DAEMON=aesdsocket
 
 start() {
     echo "Starting $DAEMON"
-    start-stop-daemon --start --start --quiet --name $DAEMON --exec $DAEMON -- -d
+    start-stop-daemon --start --quiet --name $DAEMON --exec $DAEMON -- -d
 }
 
 stop() {
